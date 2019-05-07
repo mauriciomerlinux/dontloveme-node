@@ -16,7 +16,9 @@ const models = require("./app/model");
 const routes = require("./app/route/routes.js")(app);
 
 // Test the connection
-models.sequelize.authenticate()
+models
+.sequelize
+.authenticate()
 .then(() => {
 	console.log(chalk.green('Connection has been established successfully.'));
 })
@@ -25,7 +27,10 @@ models.sequelize.authenticate()
 });
 
 // Sync Database
-models.sequelize.sync().then(function () {
+models
+.sequelize
+.sync()
+.then(function () {
 	console.log(chalk.green('Database working correctly.'));
 }).catch(function (err) {
 	console.log(err, chalk.red("Something went wrong with the Database."));
