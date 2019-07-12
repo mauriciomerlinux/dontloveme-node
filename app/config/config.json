@@ -1,7 +1,7 @@
 {
     "development": {
         "username": "root",
-        "password": "root",
+        "password": "JoaoEnrico18",
         "database": "findpet",
         "host": "localhost",
         "dialect": "mysql"

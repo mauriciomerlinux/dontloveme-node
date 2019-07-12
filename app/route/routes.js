@@ -1,7 +1,8 @@
-var userController = require('../controller/userController.js');
+const uploadController = require('../controller/uploadController.js');
 
-module.exports = function (app) {
-    app.post('/user', userController.create);
-    app.get('/user', userController.read);
-    app.post('/login', userController.login);
+module.exports = app => {
+    //app.post('/user', userController.create);
+    //app.get('/user', userController.read);
+    //app.post('/login', userController.login);
+    app.post('/upload' uploadController.create)
 }

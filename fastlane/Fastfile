@@ -1,0 +1,48 @@
+default_platform(:android)
+
+platform :android do
+  	
+	desc "Submit a new version to the Google Play Beta"
+   	lane :beta do
+      	gradle(task: 'assemble', build_type: 'release')
+
+      	upload_to_play_store(
+        	apk: 'build/outputs/apk/release/app-release.apk',
+        	mapping: 'build/outputs/mapping/release/mapping.txt',
+        	track: 'beta',
+        	skip_upload_images: true,
+        	skip_upload_screenshots: true
+      	)
+  	end
+
+  	desc "Submit a new version to the Google Play Prod"
+   	lane :prod do
+		gradle(task: 'assemble', build_type: 'release')
+		
+		upload_to_play_store(
+        	tapk: 'build/outputs/apk/release/app-release.apk',
+        	mapping: 'build/outputs/mapping/release/mapping.txt',
+        	track: 'prod',
+        	rollout: '0.20',
+        	skip_upload_images: true,
+        	skip_upload_screenshots: true,
+        	check_superseded_tracks: true
+      	)
+  	end
+
+	desc "Push a qa version to HockeyApp"
+  	lane :qa do
+		gradle(task: 'assemble', build_type: 'release')
+
+    	appcenter_upload(
+        	api_token: "6df37f6696c1e73d81df753ac66b882f00c8ce48",
+        	owner_name: "belezanaweb",
+			app_name: "mobile-android",
+        	apk: 'build/outputs/apk/release/app-release.apk',
+        	destinations: "qa-mobile-android",
+        	destination_type: "group",
+        	release_notes: "Teste versão 2.0"
+    	)
+  	end
+
+end

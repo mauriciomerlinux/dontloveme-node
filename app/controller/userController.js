@@ -1,7 +1,7 @@
 const model = require("../model").user;
 var exports = module.exports = {};
 
-exports.create = function (req, res) {
+exports.create = (req, res) => {
    model.create({
       name: req.body.name,
       email: req.body.email,
@@ -9,13 +9,13 @@ exports.create = function (req, res) {
    }).then(user => res.json(user));
 };
 
-exports.read = function (req, res) {
+exports.read = (req, res) => {
     model.findAll()
         .then(user => res.json(user))
         .error(err => res.json(err));
 };
 
-exports.login = function (req ,res) {
+exports.login = (req ,res) => {
     model.find({
   	where: {
         email: req.body.email,

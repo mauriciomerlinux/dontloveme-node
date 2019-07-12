@@ -1,13 +1,10 @@
 const model = require("../model").data;
 var exports = module.exports = {};
 
-exports.create = function (req, res) {
-   
-
-
-	:wmodel.create({
+exports.create = (req, res) => {
+   model.create({
       file: req.body.file,
       email: req.body.email,
       password: req.body.password,
-   }).then(user => res.json(user));
+   }).then(data => res.json(data));
 };

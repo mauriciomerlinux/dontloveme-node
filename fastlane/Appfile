@@ -1,0 +1,2 @@
+json_key_file("fastlane/api-8856543721619692747-195403-c40bb4ce1895.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("br.com.belezanaweb.android") # e.g. com.krausefx.app
